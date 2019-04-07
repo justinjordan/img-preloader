@@ -26,6 +26,6 @@ function ImgPreloader(src, callback) {
     }
 }
 
-window.ImgPreloader = ImgPreloader;
-
-module.exports = ImgPreloader;
+if (typeof module !== "undefined") {
+    module.exports = ImgPreloader;
+}
