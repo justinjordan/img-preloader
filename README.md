@@ -1,6 +1,6 @@
 # Image Preloader
 
-Simple image preloader that supports promises, callbacks, ES5, ES6, your emotional well being... You name it!
+Simple image preloader that supports promises, callbacks, ES5, ES6, your emotional well-being... You name it!
 
 ## Install
 

@@ -1,11 +1,15 @@
 {
   "name": "img-preloader",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Preloads images in ES5 and ES6+",
   "main": "src/ImgPreloader.js",
   "scripts": {
     "build": "parcel build ./src/ImgPreloader.js"
   },
   "author": "Justin Jordan",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sXule/img-preloader"
+  }
 }
