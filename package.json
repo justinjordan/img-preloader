@@ -1,6 +1,6 @@
 {
   "name": "img-preloader",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Preloads images in ES5 and ES6+",
   "main": "src/ImgPreloader.js",
   "scripts": {
