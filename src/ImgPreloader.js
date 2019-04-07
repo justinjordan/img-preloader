@@ -1,79 +1,40 @@
-if (typeof Promise === 'undefined') {
-    function Promise(closure) {
-        var _this = this
-
-        var thenCallback = function() {}
-        var catchCallback = function() {}
-        var finallyCallback = function() {}
-
-        this.then = function(cb) {
-            if (typeof cb === 'function') {
-                thenCallback = function() {
-                    cb.apply(_this, arguments)
-                    finallyCallback.apply(_this)
-                }
-            }
-            return _this
-        }
-
-        this.catch = function(cb) {
-            if (typeof cb === 'function') {
-                catchCallback  = function() {
-                    cb.apply(_this, arguments)
-                    finallyCallback.apply(_this)
-                }
-            }
-            return _this
-        }
-
-        this.finally = function(cb) {
-            if (typeof cb === 'function') {
-                finallyCallback = cb
-            }
-            return _this
-        }
-
-        setTimeout(function() {
-            if (typeof closure === 'function') {
-                try {
-                    closure(thenCallback, catchCallback)
-                } catch (error) {
-                    catchCallback(error)
-                }
-            }
-        }, 0)
-    }
-}
-
 function ImgPreloader(src, callback) {
-    return new Promise((resolve, reject) => {
+    callback = typeof callback === 'function' ? callback : function() {}
+
+    var closure = function(resolve, reject) {
         if (!src || typeof src !== 'string') {
             throw new Error("ImgPreloader Error: expected first argument to be a URL")
         }
 
-        const img = new Image()
+        var img = new Image()
 
-        img.onload = () => {
+        img.onload = function() {
             resolve(img)
-
-            if (typeof callback === 'function') {
-                callback(img)
-            }
+            callback(img)
         }
-        img.onerror = () => {
-            const msg = "Failed to load image"
+        img.onerror = function() {
+            var err = new Error("Failed to load image")
 
-            reject(msg)
-
-            if (typeof callback === 'function') {
-                callback(null, msg)
-            }
+            reject(err)
+            callback(null, err)
         }
 
         img.src = src
-    })
+    }
+
+    // Found Promise support
+    if (typeof Promise !== 'undefined') {
+        return new Promise(closure)
+    }
+
+    // If no support, rely on callback
+    try {
+        closure(function() {}, function() {})
+    } catch(err) {
+        callback(null, err)
+    }
 }
 
 window.ImgPreloader = ImgPreloader
 
-export default ImgPreloader
+module.exports = ImgPreloader

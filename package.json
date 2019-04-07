@@ -1,15 +1,18 @@
 {
   "name": "img-preloader",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Preloads images in ES5 and ES6+",
   "main": "src/ImgPreloader.js",
   "scripts": {
-    "build": "parcel build ./src/ImgPreloader.js -o img-preloader.js"
+    "production": "uglifyjs ./src/ImgPreloader.js -b --source-map -o ./dist/img-preloader.js && uglifyjs ./src/ImgPreloader.js -c -m --source-map -o ./dist/img-preloader.min.js"
   },
   "author": "Justin Jordan",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/sXule/img-preloader"
+  },
+  "devDependencies": {
+    "uglify-js": "^3.5.3"
   }
 }
