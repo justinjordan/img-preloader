@@ -1,10 +1,10 @@
 {
   "name": "img-preloader",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Preloads images in ES5 and ES6+",
   "main": "src/ImgPreloader.js",
   "scripts": {
-    "build": "parcel build ./src/ImgPreloader.js"
+    "build": "parcel build ./src/ImgPreloader.js -o img-preloader.js"
   },
   "author": "Justin Jordan",
   "license": "MIT",
