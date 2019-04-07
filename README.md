@@ -1,4 +1,4 @@
-# Image Preloader
+# Img-Preloader
 
 Simple image preloader that supports promises, callbacks, ES5, ES6, your emotional well-being... You name it!
 
@@ -8,43 +8,37 @@ Simple image preloader that supports promises, callbacks, ES5, ES6, your emotion
 npm i -S img-preloader
 ```
 
-## Usage
+## Include
+
+With Import:
 
 ```
 import ImgPreloader from 'img-preloader'
+```
 
+Or using script tag:
+
+```
+<script src="path/to/img-preloader/dist/img-preloader.min.js"></script>
+```
+
+## Usage
+
+```
+// Promise
 ImgPreloader('/myimage.jpg')
-    .then(img => {
+    .then(function(img) {
         // handle success
     })
-    .catch(err => {
+    .catch(function(err) {
         // handle error
     })
-    .finally(() => {
+    .finally(function() {
         // do something always
     })
-```
 
-## Usage (ES5)
-
-```
-<script src="path/to/img-preloader/dist/img-preloader.js"></script>
-<script>
-    // Promise
-    ImgPreloader('/myimage.jpg')
-        .then(function(img) {
-            // handle success
-        })
-        .catch(function(err) {
-            // handle error
-        })
-        .finally(function() {
-            // do something always
-        })
-    
-    // Or Callback
-    ImgPreloader('/myimage.jpg', function(img, err) {
-        // do something
-    })
-</script>
+// Or Callback
+ImgPreloader('/myimage.jpg', function(img, err) {
+    // do something
+})
 ```
