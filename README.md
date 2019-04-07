@@ -14,7 +14,7 @@ npm i -S img-preloader
 import ImgPreloader from 'img-preloader'
 
 ImgPreloader('/myimage.jpg')
-    .then(result => {
+    .then(img => {
         // handle success
     })
     .catch(err => {
